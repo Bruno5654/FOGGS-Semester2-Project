@@ -9,16 +9,24 @@
 class HelloGL
 {
 	public:
-	//constructor def
-	HelloGL(int argc, char* argv[]);
-	//destructor
-	~HelloGL(void);
+		//constructor def
+		HelloGL(int argc, char* argv[]);
+		//destructor
+		~HelloGL(void);
 
-	void Display();
-	void Update();
+		void Display();
+		void Update();
 
-	void DrawPolygon();
-	void DrawTriangle(float vert1x, float vert1y, float vert2x, float vert2y, float vert3x, float vert3y);
+		void DrawPolygon();
+		void DrawTriangle(float vert1x, float vert1y, float vert2x, float vert2y, float vert3x, float vert3y);
+
+		void Keyboard(unsigned char key, int x, int y);
+	
+	private:
+		//
+		float rotation;
+		float rotationKey;
+	
 };
 
 
