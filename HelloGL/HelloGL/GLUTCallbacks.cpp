@@ -21,4 +21,9 @@ namespace GLUTCallbacks
 			helloGL->Display();
 		}
 	}
+
+	void Timer(int prefferedRefresh)
+	{
+		helloGL->Update();
+	}
 }

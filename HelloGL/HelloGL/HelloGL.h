@@ -4,6 +4,7 @@
 #include <gl/GLU.h>
 #include "GL\freeglut.h"
 #include "GLUTCallbacks.h"
+#define REFRESHRATE 16
 
 class HelloGL
 {
@@ -14,6 +15,8 @@ class HelloGL
 	~HelloGL(void);
 
 	void Display();
+	void Update();
+
 	void DrawPolygon();
 	void DrawTriangle(float vert1x, float vert1y, float vert2x, float vert2y, float vert3x, float vert3y);
 };

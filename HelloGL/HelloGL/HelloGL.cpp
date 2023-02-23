@@ -6,6 +6,7 @@ HelloGL::HelloGL(int argc, char* argv[])
 	glutInit(&argc, argv);
 	glutInitWindowSize(800, 800);
 	glutCreateWindow("Simple OpenGL Program");
+	glutTimerFunc(REFRESHRATE, GLUTCallbacks::Timer, REFRESHRATE);
 	glutDisplayFunc(GLUTCallbacks::Display);
 	glutMainLoop();
 }
@@ -18,6 +19,11 @@ void HelloGL::Display()
 	DrawTriangle(0.25, 0.0, 0.0, -0.5, 0.5, -0.5);
 	DrawTriangle(0.0, 0.5, -0.25, 0.0, 0.25, 0.0);
 	glFlush(); //flushes the scene drawn to the graphics card
+}
+
+void HelloGL::Update()
+{
+	glutPostRedisplay(); //Causes the scene to redraw itself after update has finished.
 }
 
 void HelloGL::DrawPolygon()
