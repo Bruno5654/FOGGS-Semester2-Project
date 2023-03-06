@@ -7,6 +7,12 @@ HelloGL::HelloGL(int argc, char* argv[])
 	glutInitWindowSize(800, 800);
 	glutCreateWindow("Simple OpenGL Program");
 	glutDisplayFunc(GLUTCallbacks::Display);
+	//glMatrixMode(GL_PROJECTION); //Swap to projection.
+	//glLoadIdentity();
+	//Set the viewport to be the entire window.
+	//glViewport(0, 0, 800, 800);
+	//gluPerspective(45, 1, 0, 1000); //FOV, Aspect ratio, Near clipping, Far clipping.
+	//glMatrixMode(GL_MODELVIEW); //Swap back to content.
 	glutMainLoop();
 }
 
