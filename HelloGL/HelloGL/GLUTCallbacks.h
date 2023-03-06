@@ -11,5 +11,6 @@ namespace GLUTCallbacks
 
 	void Keyboard(unsigned char key, int x, int y);
 
+
 };
 
