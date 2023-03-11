@@ -4,18 +4,27 @@
 #include <gl/GLU.h>
 #include "GL\freeglut.h"
 #include "GLUTCallbacks.h"
+#include "Cube.h"
+#define REFRESHRATE 16
 
 class HelloGL
 {
 	public:
-	//constructor def
-	HelloGL(int argc, char* argv[]);
-	//destructor
-	~HelloGL(void);
+		//constructor def
+		HelloGL(int argc, char* argv[]);
+		//destructor
+		~HelloGL(void);
 
-	void Display();
-	void DrawPolygon();
-	void DrawTriangle(float vert1x, float vert1y, float vert2x, float vert2y, float vert3x, float vert3y);
+		void Display();
+		void Update();
+
+		void Keyboard(unsigned char key, int x, int y);
+	
+	private:
+		//
+		Camera* camera;
+		Cube* cube[200];
+
 };
 
 

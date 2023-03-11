@@ -4,56 +4,84 @@ HelloGL::HelloGL(int argc, char* argv[])
 {
 	GLUTCallbacks::Init(this);
 	glutInit(&argc, argv);
-	glutInitWindowSize(800, 800);
+	glutInitDisplayMode(GLUT_DOUBLE); //Turn on double buffering.
+	glutInitWindowSize(1280, 720);
+	glutInitWindowPosition(520, 100);
 	glutCreateWindow("Simple OpenGL Program");
+	glutTimerFunc(REFRESHRATE, GLUTCallbacks::Timer, REFRESHRATE);
+	
+	glutKeyboardFunc(GLUTCallbacks::Keyboard);
+
+	camera = new Camera();
+	for (int i = 0; i < 200; i++)
+	{
+		cube[i] = new Cube(((rand() % 400) / 10.0f) - 20.0f, ((rand() % 200) / 10.0f) - 10.0f, -(rand() % 1000) / 10.0f);
+		cube[i]->_rotation = (rand() % 360);
+		cube[i]->_direction = (rand() % 2);
+		cube[i]->_speed = (rand() % 1 + 3);
+	}
+
+
+	camera->eye.x = 0.0f; camera->eye.y = 0.0f; camera->eye.z = 1.0f;
+	//camera->eye.x = 5.0f; camera->eye.y = 5.0f; camera->eye.z = -5.0f;
+	camera->center.x = 0.0f; camera->center.y = 0.0f; camera->center.z = 0.0f;
+	camera->up.x = 0.0f; camera->up.y = 1.0f; camera->up.z = 1.0f;
+
 	glutDisplayFunc(GLUTCallbacks::Display);
-	//glMatrixMode(GL_PROJECTION); //Swap to projection.
-	//glLoadIdentity();
+	glMatrixMode(GL_PROJECTION); //Swap to projection.
+	glLoadIdentity();
 	//Set the viewport to be the entire window.
-	//glViewport(0, 0, 800, 800);
-	//gluPerspective(45, 1, 0, 1000); //FOV, Aspect ratio, Near clipping, Far clipping.
-	//glMatrixMode(GL_MODELVIEW); //Swap back to content.
+	glViewport(0, 0, 1280, 720);
+	gluPerspective(50, 1.25, 0, 1000); //FOV, Aspect ratio, Near clipping, Far clipping.
+	glMatrixMode(GL_MODELVIEW); //Swap back to content.
+	glEnable(GL_CULL_FACE); //Enable culling.
+	glCullFace(GL_BACK);//Cull the back faces.
+	
 	glutMainLoop();
+	
 }
 
 void HelloGL::Display()
 {
 	glClear(GL_COLOR_BUFFER_BIT); //this clears the scene
-	DrawPolygon();
-	DrawTriangle(-0.25, 0.0, -0.5, -0.5, 0.0, -0.5);
-	DrawTriangle(0.25, 0.0, 0.0, -0.5, 0.5, -0.5);
-	DrawTriangle(0.0, 0.5, -0.25, 0.0, 0.25, 0.0);
+
+	for (int i = 0; i < 200; i++)
+	{
+		cube[i]->Draw();
+	}
+
 	glFlush(); //flushes the scene drawn to the graphics card
+
+	glutSwapBuffers();
 }
 
-void HelloGL::DrawPolygon()
+void HelloGL::Update()
 {
-	glBegin(GL_POLYGON); //starts to draw a polygon
+	glLoadIdentity();
+
+	for (int i = 0; i < 200; i++)
 	{
-		glColor4f(0.0f, 0.75f, 0.25f, 0.0f);
-		glVertex2f(-0.75, 0.6); //define the first point of the polygon,top left
-		glVertex2f(0.75, 0.6); //next point, top right
-		glVertex2f(0.75, -0.6); //bottom right
-		glVertex2f(-0.75, -0.6); //last point of the polygon, bottom left
-		glEnd(); // defines the end of the draw
+		cube[i]->Update();
 	}
+
+	gluLookAt(camera->eye.x, camera->eye.y, camera->eye.z, camera->center.x, camera->center.y, camera->center.z, camera->up.x, camera->up.y, camera->up.z);
+
+
+	glutPostRedisplay(); //Causes the scene to redraw itself after update has finished.
 }
 
-void HelloGL::DrawTriangle(float vert1x, float vert1y, float vert2x, float vert2y, float vert3x, float vert3y)
+void HelloGL::Keyboard(unsigned char key, int x, int y)
 {
-	glBegin(GL_POLYGON); //starts to draw a polygon
-	{
-		glColor4f(1.0f, 1.0f, 0.5f, 0.0f);
-		glVertex2f(vert1x, vert1y); 
-		glVertex2f(vert2x, vert2y); 
-		glVertex2f(vert3x, vert3y); 
-		glEnd(); 
-	}
+	
 }
 
 HelloGL::~HelloGL(void)
 {
-
+	delete camera;
+	for (int i = 0; i < 200; i++)
+	{
+		delete cube[i];
+	}
 }
 
 
