@@ -10,6 +10,8 @@ HelloGL::HelloGL(int argc, char* argv[])
 	glutCreateWindow("Simple OpenGL Program");
 	glutTimerFunc(REFRESHRATE, GLUTCallbacks::Timer, REFRESHRATE);
 	
+	Cube::Load((char*)"cube.txt");
+	
 	glutKeyboardFunc(GLUTCallbacks::Keyboard);
 
 	camera = new Camera();

@@ -1,8 +1,7 @@
 ﻿  Cube.cpp
-  GLUTCallbacks.cpp
+C:\Users\bruno\OneDrive\Documents\GitHub\FOGGS-Semester2-Project\HelloGL\HelloGL\Cube.cpp(97,24): error C2228: left of '.r' must have class/struct/union
+C:\Users\bruno\OneDrive\Documents\GitHub\FOGGS-Semester2-Project\HelloGL\HelloGL\Cube.cpp(97,24): message : type is 'GLushort'
   HelloGL.cpp
-C:\Users\bruno\OneDrive\Documents\GitHub\FOGGS-Semester2-Project\HelloGL\HelloGL\HelloGL.cpp(19,32): warning C4244: '=': conversion from 'int' to 'GLfloat', possible loss of data
-C:\Users\bruno\OneDrive\Documents\GitHub\FOGGS-Semester2-Project\HelloGL\HelloGL\HelloGL.cpp(21,33): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-  main.cpp
+C:\Users\bruno\OneDrive\Documents\GitHub\FOGGS-Semester2-Project\HelloGL\HelloGL\HelloGL.cpp(21,32): warning C4244: '=': conversion from 'int' to 'GLfloat', possible loss of data
+C:\Users\bruno\OneDrive\Documents\GitHub\FOGGS-Semester2-Project\HelloGL\HelloGL\HelloGL.cpp(23,33): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
   Generating Code...
-  HelloGL.vcxproj -> C:\Users\bruno\OneDrive\Documents\GitHub\FOGGS-Semester2-Project\HelloGL\Debug\HelloGL.exe
