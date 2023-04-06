@@ -4,7 +4,7 @@ HelloGL::HelloGL(int argc, char* argv[])
 {
 	GLUTCallbacks::Init(this);
 	glutInit(&argc, argv);
-	glutInitDisplayMode(GLUT_DOUBLE); //Turn on double buffering.
+	glutInitDisplayMode(GLUT_DOUBLE | GLUT_DEPTH); //Turn on double buffering.
 	glutInitWindowSize(1280, 720);
 	glutInitWindowPosition(520, 100);
 	glutCreateWindow("Simple OpenGL Program");
@@ -24,7 +24,7 @@ HelloGL::HelloGL(int argc, char* argv[])
 	}
 
 
-	camera->eye.x = 0.0f; camera->eye.y = 0.0f; camera->eye.z = 1.0f;
+	camera->eye.x = 0.0f; camera->eye.y = 0.0f; camera->eye.z = 5.0f;
 	//camera->eye.x = 5.0f; camera->eye.y = 5.0f; camera->eye.z = -5.0f;
 	camera->center.x = 0.0f; camera->center.y = 0.0f; camera->center.z = 0.0f;
 	camera->up.x = 0.0f; camera->up.y = 1.0f; camera->up.z = 1.0f;
@@ -34,9 +34,10 @@ HelloGL::HelloGL(int argc, char* argv[])
 	glLoadIdentity();
 	//Set the viewport to be the entire window.
 	glViewport(0, 0, 1280, 720);
-	gluPerspective(50, 1.25, 0, 1000); //FOV, Aspect ratio, Near clipping, Far clipping.
+	gluPerspective(50, 1.25, 1, 1000); //FOV, Aspect ratio, Near clipping, Far clipping.
 	glMatrixMode(GL_MODELVIEW); //Swap back to content.
 	glEnable(GL_CULL_FACE); //Enable culling.
+	glEnable(GL_DEPTH_TEST);
 	glCullFace(GL_BACK);//Cull the back faces.
 	
 	glutMainLoop();
@@ -45,7 +46,7 @@ HelloGL::HelloGL(int argc, char* argv[])
 
 void HelloGL::Display()
 {
-	glClear(GL_COLOR_BUFFER_BIT); //this clears the scene
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); //this clears the scene
 
 	for (int i = 0; i < 200; i++)
 	{
@@ -74,7 +75,32 @@ void HelloGL::Update()
 
 void HelloGL::Keyboard(unsigned char key, int x, int y)
 {
-	
+	if (key == 'w')
+	{
+		camera->eye.y = camera->eye.y - 0.1f;
+	}
+	else if (key == 's')
+	{
+		camera->eye.y = camera->eye.y + 0.1f;
+	}
+
+	if (key == 'a')
+	{
+		camera->eye.x = camera->eye.x + 0.1f;
+	}
+	else if (key == 'd')
+	{
+		camera->eye.x = camera->eye.x - 0.1f;
+	}
+
+	if (key == 'q')
+	{
+		camera->eye.z = camera->eye.z + 0.1f;
+	}
+	else if (key == 'e')
+	{
+		camera->eye.z = camera->eye.z - 0.1f;
+	}
 }
 
 HelloGL::~HelloGL(void)

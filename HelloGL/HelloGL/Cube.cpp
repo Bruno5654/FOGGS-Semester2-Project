@@ -94,9 +94,7 @@ bool Cube::Load(char* path)
 	indices = new GLushort[numIndices];
 	for (int i = 0; i < numIndices; i++)
 	{
-		inFile >> indices[i].r;
-		inFile >> indices[i].g;
-		inFile >> indices[i].b;
+		inFile >> indices[i];
 	}
 	
 	inFile.close();
