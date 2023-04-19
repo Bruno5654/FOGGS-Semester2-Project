@@ -2,6 +2,14 @@
 
 HelloGL::HelloGL(int argc, char* argv[])
 {
+	InitGL(argc, argv);
+	InitObjects();
+	glutMainLoop();
+}
+
+void HelloGL::InitGL(int argc, char* argv[])
+{
+	
 	GLUTCallbacks::Init(this);
 	glutInit(&argc, argv);
 	glutInitDisplayMode(GLUT_DOUBLE | GLUT_DEPTH); //Turn on double buffering.
@@ -9,25 +17,8 @@ HelloGL::HelloGL(int argc, char* argv[])
 	glutInitWindowPosition(520, 100);
 	glutCreateWindow("Simple OpenGL Program");
 	glutTimerFunc(REFRESHRATE, GLUTCallbacks::Timer, REFRESHRATE);
-	
-	Cube::Load((char*)"cube.txt");
-	
+
 	glutKeyboardFunc(GLUTCallbacks::Keyboard);
-
-	camera = new Camera();
-	for (int i = 0; i < 200; i++)
-	{
-		cube[i] = new Cube(((rand() % 400) / 10.0f) - 20.0f, ((rand() % 200) / 10.0f) - 10.0f, -(rand() % 1000) / 10.0f);
-		cube[i]->_rotation = (rand() % 360);
-		cube[i]->_direction = (rand() % 2);
-		cube[i]->_speed = (rand() % 1 + 3);
-	}
-
-
-	camera->eye.x = 0.0f; camera->eye.y = 0.0f; camera->eye.z = 5.0f;
-	//camera->eye.x = 5.0f; camera->eye.y = 5.0f; camera->eye.z = -5.0f;
-	camera->center.x = 0.0f; camera->center.y = 0.0f; camera->center.z = 0.0f;
-	camera->up.x = 0.0f; camera->up.y = 1.0f; camera->up.z = 1.0f;
 
 	glutDisplayFunc(GLUTCallbacks::Display);
 	glMatrixMode(GL_PROJECTION); //Swap to projection.
@@ -39,9 +30,25 @@ HelloGL::HelloGL(int argc, char* argv[])
 	glEnable(GL_CULL_FACE); //Enable culling.
 	glEnable(GL_DEPTH_TEST);
 	glCullFace(GL_BACK);//Cull the back faces.
-	
-	glutMainLoop();
-	
+}
+
+void HelloGL::InitObjects()
+{
+	Mesh* cubeMesh = MeshLoader::Load((char*)"Cube.txt");
+
+	camera = new Camera();
+	for (int i = 0; i < 200; i++)
+	{
+		cube[i] = new Cube(cubeMesh,((rand() % 400) / 10.0f) - 20.0f, ((rand() % 200) / 10.0f) - 10.0f, -(rand() % 1000) / 10.0f);
+		cube[i]->_rotation = (rand() % 360);
+		cube[i]->_direction = (rand() % 2);
+		cube[i]->_speed = (rand() % 1 + 3);
+	}
+
+	camera->eye.x = 0.0f; camera->eye.y = 0.0f; camera->eye.z = 5.0f;
+	//camera->eye.x = 5.0f; camera->eye.y = 5.0f; camera->eye.z = -5.0f;
+	camera->center.x = 0.0f; camera->center.y = 0.0f; camera->center.z = 0.0f;
+	camera->up.x = 0.0f; camera->up.y = 1.0f; camera->up.z = 1.0f;
 }
 
 void HelloGL::Display()

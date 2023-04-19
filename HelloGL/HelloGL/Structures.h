@@ -1,4 +1,9 @@
 #pragma once
+#include <Windows.h> //Requried for OpenGL on windows.
+#include "Structures.h"
+#include <gl/GL.h>
+#include <gl/GLU.h>
+#include "GL\freeglut.h"
 
 struct Vector3
 {
@@ -22,4 +27,12 @@ struct Color
 struct Vertex
 {
 	GLfloat x, y, z;
+};
+
+struct Mesh
+{
+	Vertex* Vertices;
+	Color* Colors;
+	GLushort* Indices;
+	int VertexCount, ColorCount, IndexCount;
 };

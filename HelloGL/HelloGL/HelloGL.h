@@ -1,10 +1,7 @@
 #pragma once
-#include <Windows.h> //Requried for OpenGL on windows.
-#include <gl/GL.h>
-#include <gl/GLU.h>
-#include "GL\freeglut.h"
 #include "GLUTCallbacks.h"
 #include "Cube.h"
+#include "MeshLoader.h"
 #define REFRESHRATE 16
 
 class HelloGL
@@ -18,6 +15,8 @@ class HelloGL
 		void Display();
 		void Update();
 
+		void InitObjects();
+		void InitGL(int argc, char* argv[]);
 		void Keyboard(unsigned char key, int x, int y);
 	
 	private:
