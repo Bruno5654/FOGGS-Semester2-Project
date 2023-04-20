@@ -22,7 +22,7 @@ class HelloGL
 	private:
 		//
 		Camera* camera;
-		Cube* cube[200];
+		SceneObject* objects[1000];
 
 };
 

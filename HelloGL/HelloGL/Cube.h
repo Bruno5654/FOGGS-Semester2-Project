@@ -1,7 +1,9 @@
 #pragma once
 #include "Structures.h"
+#include "SceneObject.h"
 
-class Cube
+
+class Cube : public SceneObject
 {
 private:
 	static Vertex* indexedVertices;
@@ -10,11 +12,10 @@ private:
 	static int numVertices, numColors, numIndices;
 
 	Vector3 _position;
-	Mesh* _mesh;
 
 
 public:
-	Cube(Mesh* mesh, float x, float y, float z);
+	Cube(Mesh* mesh, Texture2D* texture, float x, float y, float z);
 	~Cube();
 
 	void Draw();

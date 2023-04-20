@@ -1,4 +1,2 @@
-﻿  HelloGL.cpp
-C:\Users\bruno\OneDrive\Documents\GitHub\FOGGS-Semester2-Project\HelloGL\HelloGL\HelloGL.cpp(43,32): warning C4244: '=': conversion from 'int' to 'GLfloat', possible loss of data
-C:\Users\bruno\OneDrive\Documents\GitHub\FOGGS-Semester2-Project\HelloGL\HelloGL\HelloGL.cpp(45,33): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-  HelloGL.vcxproj -> C:\Users\bruno\OneDrive\Documents\GitHub\FOGGS-Semester2-Project\HelloGL\Debug\HelloGL.exe
+﻿  Cube.cpp
+  HelloGL.vcxproj -> C:\Users\r019574m\Documents\GitHub\FOGGS-Semester2-Project\HelloGL\Debug\HelloGL.exe

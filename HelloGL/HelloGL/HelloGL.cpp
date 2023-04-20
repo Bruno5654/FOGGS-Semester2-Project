@@ -27,22 +27,23 @@ void HelloGL::InitGL(int argc, char* argv[])
 	glViewport(0, 0, 1280, 720);
 	gluPerspective(50, 1.25, 1, 1000); //FOV, Aspect ratio, Near clipping, Far clipping.
 	glMatrixMode(GL_MODELVIEW); //Swap back to content.
-	glEnable(GL_CULL_FACE); //Enable culling.
+	glEnable(GL_TEXTURE_2D);
 	glEnable(GL_DEPTH_TEST);
+	glEnable(GL_CULL_FACE); //Enable culling.
 	glCullFace(GL_BACK);//Cull the back faces.
+
 }
 
 void HelloGL::InitObjects()
 {
 	Mesh* cubeMesh = MeshLoader::Load((char*)"Cube.txt");
+	Texture2D* texture = new Texture2D();
+	texture->Load((char*)"penguins.raw", 512, 512);
 
 	camera = new Camera();
-	for (int i = 0; i < 200; i++)
+	for (int i = 0; i < 1000; i++)
 	{
-		cube[i] = new Cube(cubeMesh,((rand() % 400) / 10.0f) - 20.0f, ((rand() % 200) / 10.0f) - 10.0f, -(rand() % 1000) / 10.0f);
-		cube[i]->_rotation = (rand() % 360);
-		cube[i]->_direction = (rand() % 2);
-		cube[i]->_speed = (rand() % 1 + 3);
+		objects[i] = new Cube(cubeMesh,texture,((rand() % 400) / 10.0f) - 20.0f, ((rand() % 200) / 10.0f) - 10.0f, -(rand() % 1000) / 10.0f);
 	}
 
 	camera->eye.x = 0.0f; camera->eye.y = 0.0f; camera->eye.z = 5.0f;
@@ -57,7 +58,7 @@ void HelloGL::Display()
 
 	for (int i = 0; i < 200; i++)
 	{
-		cube[i]->Draw();
+		objects[i]->Draw();
 	}
 
 	glFlush(); //flushes the scene drawn to the graphics card
@@ -71,7 +72,7 @@ void HelloGL::Update()
 
 	for (int i = 0; i < 200; i++)
 	{
-		cube[i]->Update();
+		objects[i]->Update();
 	}
 
 	gluLookAt(camera->eye.x, camera->eye.y, camera->eye.z, camera->center.x, camera->center.y, camera->center.z, camera->up.x, camera->up.y, camera->up.z);
@@ -115,7 +116,7 @@ HelloGL::~HelloGL(void)
 	delete camera;
 	for (int i = 0; i < 200; i++)
 	{
-		delete cube[i];
+		delete objects[i];
 	}
 }
 
