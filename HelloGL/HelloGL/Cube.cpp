@@ -7,12 +7,14 @@ int Cube::numColors = 0;
 int Cube::numIndices = 0;
 
 
-Cube::Cube(Mesh* mesh, Texture2D* texture, float x, float y, float z) : SceneObject(mesh,texture)
+Cube::Cube(Mesh* mesh, Texture2D* texture, float x, float y, float z) : SceneObject(mesh,nullptr)
 {
 	_position.x = x;
 	_position.y = y;
 	_position.z = z;
 	
+	_texture = texture;
+
 	_rotation = 0;
 	_direction = 0;
 	_speed = 1;
@@ -48,12 +50,14 @@ void Cube::Draw()
 			glColor3fv(&_mesh->Colors[_mesh->Indices[i]].r);
 			glVertex3fv(&_mesh->Vertices[_mesh->Indices[i]].x);
 		}
+
+		glDisableClientState(GL_TEXTURE_COORD_ARRAY);
 		glEnd();
 
 		glPopMatrix();
 		
 	}
-	glDisableClientState(GL_TEXTURE_COORD_ARRAY);
+	
 }
 
 void Cube::Update()
