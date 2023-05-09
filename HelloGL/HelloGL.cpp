@@ -86,28 +86,34 @@ void HelloGL::Keyboard(unsigned char key, int x, int y)
 	if (key == 'w')
 	{
 		camera->eye.y = camera->eye.y - 0.1f;
+		camera->center.y = camera->center.y - 0.1f;
 	}
 	else if (key == 's')
 	{
 		camera->eye.y = camera->eye.y + 0.1f;
+		camera->center.y = camera->center.y + 0.1f;
 	}
 
 	if (key == 'a')
 	{
 		camera->eye.x = camera->eye.x + 0.1f;
+		camera->center.x = camera->center.x + 0.1f;
 	}
 	else if (key == 'd')
 	{
 		camera->eye.x = camera->eye.x - 0.1f;
+		camera->center.x = camera->center.x - 0.1f;
 	}
 
 	if (key == 'q')
 	{
 		camera->eye.z = camera->eye.z + 0.1f;
+		camera->center.z = camera->center.z + 0.1f;
 	}
 	else if (key == 'e')
 	{
 		camera->eye.z = camera->eye.z - 0.1f;
+		camera->center.z = camera->center.z - 0.1f;
 	}
 }
 
