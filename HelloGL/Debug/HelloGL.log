@@ -1,4 +1,10 @@
-﻿  HelloGL.cpp
-  Pyramid.cpp
-  Generating Code...
+﻿  Cube.cpp
+C:\Users\bruno\OneDrive\Documents\GitHub\FOGGS-Semester2-Project\HelloGL\Cube.cpp(15,24): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\bruno\OneDrive\Documents\GitHub\FOGGS-Semester2-Project\HelloGL\Cube.cpp(21,57): warning C4305: '=': truncation from 'double' to 'float'
+C:\Users\bruno\OneDrive\Documents\GitHub\FOGGS-Semester2-Project\HelloGL\Cube.cpp(21,85): warning C4305: '=': truncation from 'double' to 'float'
+C:\Users\bruno\OneDrive\Documents\GitHub\FOGGS-Semester2-Project\HelloGL\Cube.cpp(23,28): warning C4305: '=': truncation from 'double' to 'float'
+C:\Users\bruno\OneDrive\Documents\GitHub\FOGGS-Semester2-Project\HelloGL\Cube.cpp(25,30): warning C4305: '=': truncation from 'double' to 'float'
+C:\Users\bruno\OneDrive\Documents\GitHub\FOGGS-Semester2-Project\HelloGL\Cube.cpp(25,59): warning C4305: '=': truncation from 'double' to 'float'
+C:\Users\bruno\OneDrive\Documents\GitHub\FOGGS-Semester2-Project\HelloGL\Cube.cpp(25,88): warning C4305: '=': truncation from 'double' to 'float'
+C:\Users\bruno\OneDrive\Documents\GitHub\FOGGS-Semester2-Project\HelloGL\Cube.cpp(27,29): warning C4305: '=': truncation from 'double' to 'GLfloat'
   HelloGL.vcxproj -> C:\Users\bruno\OneDrive\Documents\GitHub\FOGGS-Semester2-Project\Debug\HelloGL.exe

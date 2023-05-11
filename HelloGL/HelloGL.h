@@ -17,6 +17,8 @@ class HelloGL
 		void Update();
 
 		void InitObjects();
+		void InitLighting();
+	
 		void InitGL(int argc, char* argv[]);
 		void Keyboard(unsigned char key, int x, int y);
 	
@@ -24,6 +26,8 @@ class HelloGL
 		//
 		Camera* camera;
 		SceneObject* objects[1000];
+		Vector4* _lightPosition;
+		Lighting* _lightData;
 
 };
 

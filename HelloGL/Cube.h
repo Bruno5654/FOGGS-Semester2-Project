@@ -12,7 +12,7 @@ private:
 	static int numVertices, numColors, numIndices;
 
 	Vector3 _position;
-
+	Material* _material;
 
 public:
 	Cube(Mesh* mesh, Texture2D* texture, float x, float y, float z);
@@ -20,6 +20,7 @@ public:
 
 	void Draw();
 	void Update();
+	void InitMaterial();
 
 	GLfloat _rotation;
 	int _direction;

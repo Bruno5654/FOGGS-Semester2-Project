@@ -12,6 +12,11 @@ struct Vector3
 	float z;
 };
 
+struct Vector4
+{
+	float x, y, z, w;
+};
+
 struct Camera
 {
 	Vector3 eye;
@@ -37,9 +42,22 @@ struct TexCoord
 struct Mesh
 {
 	Vertex* Vertices;
-	Color* Colors;
+	//Color* Colors;
+	Vector3* Normals;
 	GLushort* Indices;
 	TexCoord* TexCoords;
-	int VertexCount, ColorCount, IndexCount, TexCoordCount;
+	int VertexCount, NormalCount, IndexCount, TexCoordCount;
 };
+
+struct Lighting
+{
+	Vector4 Ambient, Diffuse, Specular;
+};
+
+struct Material
+{
+	Vector4 Ambient, Diffuse, Specular;
+	GLfloat Shininess;
+};
+
 

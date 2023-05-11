@@ -18,7 +18,7 @@ Pyramid::~Pyramid()
 
 void Pyramid::Draw()
 {
-	if (_mesh->Vertices != nullptr && _mesh->Colors != nullptr && _mesh->Indices != nullptr)
+	if (_mesh->Vertices != nullptr && _mesh->Normals != nullptr && _mesh->Indices != nullptr)
 	{
 		glPushMatrix();
 		glTranslatef(_position.x, _position.y, _position.z);
@@ -26,7 +26,7 @@ void Pyramid::Draw()
 		glBegin(GL_TRIANGLES);
 		for (int i = 0; i < 36; i++)
 		{
-			glColor3fv(&_mesh->Colors[_mesh->Indices[i]].r);
+			//glColor3fv(&_mesh->Colors[_mesh->Indices[i]].r);
 			glVertex3fv(&_mesh->Vertices[_mesh->Indices[i]].x);
 		}
 
