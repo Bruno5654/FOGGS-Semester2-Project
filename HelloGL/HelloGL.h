@@ -1,6 +1,7 @@
 #pragma once
 #include "GLUTCallbacks.h"
 #include "Cube.h"
+#include "Pyramid.h"
 #include "MeshLoader.h"
 #define REFRESHRATE 16
 

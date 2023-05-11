@@ -56,7 +56,6 @@ void Cube::Draw()
 		glEnd();
 
 		glPopMatrix();
-		
 	}
 	
 }

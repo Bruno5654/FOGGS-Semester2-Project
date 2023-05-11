@@ -1,4 +1,5 @@
 #include "HelloGL.h"
+#include <iostream>
 
 HelloGL::HelloGL(int argc, char* argv[])
 {
@@ -39,11 +40,17 @@ void HelloGL::InitObjects()
 	Mesh* cubeMesh = MeshLoader::Load((char*)"Cube.txt");
 	Texture2D* texture = new Texture2D();
 	texture->Load((char*)"penguins.raw", 512, 512);
+	Mesh* pyramidMesh = MeshLoader::Load((char*)"pyramid.txt");
 
 	camera = new Camera();
-	for (int i = 0; i < 1000; i++)
+	for (int i = 0; i < 250; i++)
 	{
 		objects[i] = new Cube(cubeMesh,texture,((rand() % 400) / 10.0f) - 20.0f, ((rand() % 200) / 10.0f) - 10.0f, -(rand() % 1000) / 10.0f);
+	}
+	for (int i = 250; i < 500; i++)
+	{
+		objects[i] = new Pyramid(pyramidMesh, ((rand() % 400) / 10.0f) - 20.0f, ((rand() % 200) / 10.0f) - 10.0f, -(rand() % 1000) / 10.0f);
+		//std::cout<<"Pyramid "<< i <<" created.\n";
 	}
 
 	camera->eye.x = 0.0f; camera->eye.y = 0.0f; camera->eye.z = 5.0f;
@@ -56,7 +63,7 @@ void HelloGL::Display()
 {
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); //this clears the scene
 
-	for (int i = 0; i < 200; i++)
+	for (int i = 0; i < 500; i++)
 	{
 		objects[i]->Draw();
 	}
@@ -70,7 +77,7 @@ void HelloGL::Update()
 {
 	glLoadIdentity();
 
-	for (int i = 0; i < 200; i++)
+	for (int i = 0; i < 500; i++)
 	{
 		objects[i]->Update();
 	}
