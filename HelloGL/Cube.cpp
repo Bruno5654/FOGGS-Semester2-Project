@@ -7,7 +7,7 @@ int Cube::numColors = 0;
 int Cube::numIndices = 0;
 
 
-Cube::Cube(Mesh* mesh, Texture2D* texture, float x, float y, float z) : SceneObject(mesh,nullptr)
+Cube::Cube(Mesh* mesh, Texture2D* texture, float x, float y, float z) : SceneObject(mesh,texture)
 {
 	_position.x = x;
 	_position.y = y;

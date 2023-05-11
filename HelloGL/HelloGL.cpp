@@ -38,10 +38,11 @@ void HelloGL::InitGL(int argc, char* argv[])
 void HelloGL::InitObjects()
 {
 	Mesh* cubeMesh = MeshLoader::Load((char*)"Cube.txt");
+	Mesh* pyramidMesh = MeshLoader::Load((char*)"pyramid.txt");
+	
 	Texture2D* texture = new Texture2D();
 	texture->Load((char*)"penguins.raw", 512, 512);
-	Mesh* pyramidMesh = MeshLoader::Load((char*)"pyramid.txt");
-
+	
 	camera = new Camera();
 	for (int i = 0; i < 250; i++)
 	{
@@ -92,13 +93,14 @@ void HelloGL::Keyboard(unsigned char key, int x, int y)
 {
 	if (key == 'w')
 	{
-		camera->eye.y = camera->eye.y + 0.1f;
-		camera->center.y = camera->center.y + 0.1f;
+		camera->eye.z = camera->eye.z - 0.1f;
+		camera->center.z = camera->center.z - 0.1f;
+		
 	}
 	else if (key == 's')
 	{
-		camera->eye.y = camera->eye.y - 0.1f;
-		camera->center.y = camera->center.y - 0.1f;
+		camera->eye.z = camera->eye.z + 0.1f;
+		camera->center.z = camera->center.z + 0.1f;
 	}
 
 	if (key == 'a')
@@ -114,13 +116,13 @@ void HelloGL::Keyboard(unsigned char key, int x, int y)
 
 	if (key == 'q')
 	{
-		camera->eye.z = camera->eye.z - 0.1f;
-		camera->center.z = camera->center.z - 0.1f;
+		camera->eye.y = camera->eye.y + 0.1f;
+		camera->center.y = camera->center.y + 0.1f;
 	}
 	else if (key == 'e')
 	{
-		camera->eye.z = camera->eye.z + 0.1f;
-		camera->center.z = camera->center.z + 0.1f;
+		camera->eye.y = camera->eye.y - 0.1f;
+		camera->center.y = camera->center.y - 0.1f;
 	}
 }
 
