@@ -1,1 +1,8 @@
-﻿  HelloGL.vcxproj -> C:\Users\bruno\OneDrive\Documents\GitHub\FOGGS-Semester2-Project\Debug\HelloGL.exe
+﻿  Cube.cpp
+  GLUTCallbacks.cpp
+  HelloGL.cpp
+  MeshLoader.cpp
+  SceneObject.cpp
+  main.cpp
+  Generating Code...
+  HelloGL.vcxproj -> C:\Users\r019574m\Documents\GitHub\FOGGS-Semester2-Project\Debug\HelloGL.exe

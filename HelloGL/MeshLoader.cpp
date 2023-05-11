@@ -47,7 +47,6 @@ namespace MeshLoader
 	void LoadTexCoords(ifstream& inFile, Mesh& mesh)
 	{
 		inFile >> mesh.TexCoordCount;
-
 		if (mesh.TexCoordCount > 0)
 		{
 			mesh.TexCoords = new TexCoord[mesh.TexCoordCount];
@@ -58,6 +57,7 @@ namespace MeshLoader
 				inFile >> mesh.TexCoords[i].v;
 			}
 		}
+		
 	}
 
 	void LoadIndices(ifstream& inFile, Mesh& mesh)
@@ -91,7 +91,9 @@ namespace MeshLoader
 		//LOAD DATA USING METHODS ABOVE
 		LoadVertices(inFile, *mesh);
 		LoadColours(inFile, *mesh);
+		LoadTexCoords(inFile, *mesh);
 		LoadIndices(inFile, *mesh);
+		
 
 		return mesh;
 	}

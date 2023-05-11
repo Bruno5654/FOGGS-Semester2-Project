@@ -47,6 +47,7 @@ void Cube::Draw()
 		glBegin(GL_TRIANGLES);
 		for (int i = 0; i < 36; i++)
 		{
+			glTexCoord2fv(&_mesh->TexCoords[_mesh->Indices[i]].u);
 			glColor3fv(&_mesh->Colors[_mesh->Indices[i]].r);
 			glVertex3fv(&_mesh->Vertices[_mesh->Indices[i]].x);
 		}
